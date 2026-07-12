@@ -394,7 +394,7 @@ The AI identified strong financial performance, positive market sentiment, and f
 **Summary:**
 Although NVIDIA is a global leader in AI and semiconductor technology, the AI considered the company's current valuation and identified several financial risks. Based on the overall financial analysis and market sentiment, the system recommended waiting for a better investment opportunity.
 
-![NVIDIA Corporation](screenshots/nvidia-pass.png)
+![NVIDIA Corporation](screenshots/nivi.png)
 
 ---
 
