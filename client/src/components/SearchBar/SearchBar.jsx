@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import styles from "./SearchBar.module.css";
 
 function SearchBar({ onSearch, loading }) {
     const [query, setQuery] = useState('');
@@ -21,11 +22,11 @@ function SearchBar({ onSearch, loading }) {
     ];
 
     return (
-        <div className="search-container">
-            <form onSubmit={handleSubmit} className="search-bar">
+        <div className={styles.searchContainer}>
+            <form onSubmit={handleSubmit} className={styles.searchBar}>
                 <input
                     type="text"
-                    className="search-bar__input"
+                    className={styles.searchInput}
                     placeholder="Enter a company name (e.g., Tesla, Apple, Microsoft)..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -33,7 +34,7 @@ function SearchBar({ onSearch, loading }) {
                 />
                 <button
                     type="submit"
-                    className="search-bar__btn"
+                    className={styles.searchButton}
                     disabled={loading || !query.trim()}
                 >
                     <SearchIcon style={{ fontSize: '1.1rem' }} />
@@ -41,11 +42,11 @@ function SearchBar({ onSearch, loading }) {
                 </button>
             </form>
 
-            <div className="search-suggestions">
+            <div className={styles.searchSuggestions}>
                 {suggestions.map((company) => (
                     <button type = "button"
                         key={company}
-                        className="suggestion-chip"
+                        className={styles.suggestionChip}
                         disabled={loading}
                         onClick={() =>{setQuery(company);
                             onSearch(company);

@@ -1,6 +1,7 @@
 
 
 
+import styles from './RecommendationCard.module.css';
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import AssessmentIcon from "@mui/icons-material/Assessment";
@@ -22,12 +23,12 @@ function getDecisionClass(decision) {
   const d = decision.toUpperCase();
 
   if (d === "INVEST" || d === "BUY")
-    return "decision-badge--invest";
+    return "decisionBadge--invest";
 
   if (d === "PASS" || d === "SELL" || d === "AVOID")
-    return "decision-badge--pass";
+    return "decisionBadge--pass";
 
-  return "decision-badge--hold";
+  return "decisionBadge--hold";
 }
 
 function getDecisionIcon(decision) {
@@ -45,25 +46,25 @@ function getDecisionIcon(decision) {
 }
 
 function getSentimentClass(sentiment) {
-  if (!sentiment) return "sentiment-badge--neutral";
+  if (!sentiment) return "sentimentBadge--neutral";
 
   const s = sentiment.toUpperCase();
 
   if (s === "POSITIVE")
-    return "sentiment-badge--positive";
+    return "sentimentBadge--positive";
 
   if (s === "NEGATIVE")
-    return "sentiment-badge--negative";
+    return "sentimentBadge--negative";
 
   if (s === "MIXED")
-    return "sentiment-badge--mixed";
+    return "sentimentBadge--mixed";
 
-  return "sentiment-badge--neutral";
+  return "sentimentBadge--neutral";
 }
 
 function getConfidenceBarClass(confidence) {
-  if (confidence >= 70) return "confidence-bar__fill--high";
-  if (confidence < 40) return "confidence-bar__fill--low";
+  if (confidence >= 70) return "confidenceBarFill--high";
+  if (confidence < 40) return "confidenceBarFill--low";
   return "";
 }
 
@@ -126,22 +127,20 @@ function RecommendationCard({
   const recommendationReason =
     getRecommendationReason(decision);
 
-  return (
-    <div className="recommendation-card">
+    return (
+    <div className={styles.recommendationCard}>
 
-      <div className="recommendation-top">
+      <div className={styles.recommendationTop}>
 
-        <h2 className="company-name">
+        <h2 className={styles.companyName}>
           {companyName}
         </h2>
 
-        <div className="recommendation-card__header">
+        <div className={styles.recommendationCardHeader}>
 
           {decision && (
             <span
-              className={`decision-badge ${getDecisionClass(
-                decision
-              )}`}
+              className={`${styles.decisionBadge} ${styles[getDecisionClass(decision)]}`}
             >
               {getDecisionIcon(decision)}
               {decision}
@@ -150,9 +149,7 @@ function RecommendationCard({
 
           {overallSentiment && (
             <span
-              className={`sentiment-badge ${getSentimentClass(
-                overallSentiment
-              )}`}
+              className={`${styles.sentimentBadge} ${styles[getSentimentClass(overallSentiment)]}`}
             >
               {overallSentiment} Sentiment
             </span>
@@ -163,24 +160,22 @@ function RecommendationCard({
       </div>
 
       {confidence != null && (
-        <div className="confidence-section">
+        <div className={styles.confidenceSection}>
 
-          <div className="confidence-label">
+          <div className={styles.confidenceLabel}>
 
             <span>How confident is this recommendation?</span>
 
-            <span className="confidence-label__value">
+            <span className={styles.confidenceLabelValue}>
               {confidence}%
             </span>
 
           </div>
 
-          <div className="confidence-bar">
+          <div className={styles.confidenceBar}>
 
             <div
-              className={`confidence-bar__fill ${getConfidenceBarClass(
-                confidence
-              )}`}
+              className={`${styles.confidenceBarFill} ${styles[getConfidenceBarClass(confidence)]}`}
               style={{
                 width: `${Math.min(
                   Math.max(confidence, 0),
@@ -194,28 +189,28 @@ function RecommendationCard({
         </div>
       )}
 
-      <div className="recommendation-message">
+      <div className={styles.recommendationMessage}>
 
-        <div className="recommendation-message__title">
+        <div className={styles.recommendationMessageTitle}>
           {recommendationReason}
         </div>
 
-        <div className="recommendation-summary">
+        <div className={styles.recommendationSummary}>
           {recommendationSummary}
         </div>
 
       </div>
 
-      <div className="stock-stats">
+      <div className={styles.stockStats}>
 
         {price != null && (
-          <div className="stock-stat">
+          <div className={styles.stockStat}>
 
-            <div className="stock-stat__label">
+            <div className={styles.stockStatLabel}>
               Current Price
             </div>
 
-            <div className="stock-stat__value">
+            <div className={styles.stockStatValue}>
               ${price.toFixed(2)}
             </div>
 
@@ -223,13 +218,13 @@ function RecommendationCard({
         )}
 
         {marketCap != null && (
-          <div className="stock-stat">
+          <div className={styles.stockStat}>
 
-            <div className="stock-stat__label">
+            <div className={styles.stockStatLabel}>
               Market Value
             </div>
 
-            <div className="stock-stat__value">
+            <div className={styles.stockStatValue}>
               {formatLargeNumber(marketCap)}
             </div>
 
@@ -237,14 +232,14 @@ function RecommendationCard({
         )}
 
         {sector && (
-          <div className="stock-stat">
+          <div className={styles.stockStat}>
 
-            <div className="stock-stat__label">
+            <div className={styles.stockStatLabel}>
               Industry
             </div>
 
             <div
-              className="stock-stat__value"
+              className={styles.stockStatValue}
               style={{ fontSize: "0.95rem" }}
             >
               {sector}

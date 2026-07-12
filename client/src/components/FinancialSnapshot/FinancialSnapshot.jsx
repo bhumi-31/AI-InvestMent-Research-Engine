@@ -1,5 +1,6 @@
 
 
+import styles from './FinancialSnapshot.module.css';
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
@@ -52,21 +53,21 @@ const topMetrics = [
 
 function HealthCard({ title, status, description, color }) {
   return (
-    <div className="health-card">
+    <div className={styles.healthCard}>
 
-      <div className="health-card-header">
+      <div className={styles.healthCardHeader}>
 
-        {color === "green" && <CheckCircleIcon className="green" />}
+        {color === "green" && <CheckCircleIcon className={styles.green} />}
 
-        {color === "yellow" && <WarningAmberIcon className="yellow" />}
+        {color === "yellow" && <WarningAmberIcon className={styles.yellow} />}
 
-        {color === "red" && <ErrorIcon className="red" />}
+        {color === "red" && <ErrorIcon className={styles.red} />}
 
         <h4>{title}</h4>
 
       </div>
 
-      <div className={`health-status ${color}`}>
+      <div className={`${styles.healthStatus} ${styles[color]}`}>
         {status}
       </div>
 
@@ -80,7 +81,7 @@ function FinancialSnapshot({ data }) {
   if (!data) return null;
 
   return (
-    <div>
+    <div className={styles.financialSection}>
 
       <div className="section-title">
         <ShowChartIcon className="icon" />
@@ -89,17 +90,17 @@ function FinancialSnapshot({ data }) {
 
       {/* Top Numbers */}
 
-      <div className="financial-grid">
+      <div className={styles.financialGrid}>
 
         {topMetrics.map(({ key, label, type }) => (
 
-          <div key={key} className="metric-card">
+          <div key={key} className={styles.metricCard}>
 
-            <div className="metric-card__label">
+            <div className={styles.metricCardLabel}>
               {label}
             </div>
 
-            <div className="metric-card__value">
+            <div className={styles.metricCardValue}>
               {formatValue(data[key], type)}
             </div>
 
@@ -111,7 +112,7 @@ function FinancialSnapshot({ data }) {
 
       {/* Health Report */}
 
-      <div className="health-grid">
+      <div className={styles.healthGrid}>
 
         <HealthCard
           title="Stock Valuation"

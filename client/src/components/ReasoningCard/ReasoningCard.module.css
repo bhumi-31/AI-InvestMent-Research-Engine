@@ -1,0 +1,94 @@
+.reasoningList {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.reasoningItem {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	font-size: 0.9rem;
+	color: var(--text-secondary);
+	line-height: 1.65;
+}
+
+.reasoningItemIcon {
+	flex-shrink: 0;
+	color: var(--accent-green);
+	margin-top: 3px;
+	font-size: 1rem !important;
+}
+
+.reasoningGrid {
+	display: grid;
+	gap: 16px;
+}
+
+.reasoningSubtitle {
+	color: #9ca3af;
+	margin-bottom: 24px;
+	font-size: 15px;
+}
+
+.reasonCard {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	padding: 18px;
+	transition: 0.3s;
+}
+
+.reasonCard:hover {
+	transform: translateY(-4px);
+	border-color: #8b5cf6;
+	box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+}
+
+.reasonCardHeader {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.reasonCardHeader h4 {
+	margin: 0;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.reasonCard p {
+	color: #c4c4d4;
+	line-height: 1.7;
+	margin: 0;
+}
+
+.reasonCard svg {
+	font-size: 22px;
+}
+
+.reasonCardPositive {
+	border-left: 4px solid #22c55e;
+}
+
+.reasonCardDanger {
+	border-left: 4px solid #ef4444;
+}
+
+.reasonCardNeutral {
+	border-left: 4px solid #f59e0b;
+}
+
+.reasonCardPositive svg {
+	color: #22c55e;
+}
+
+.reasonCardDanger svg {
+	color: #ef4444;
+}
+
+.reasonCardNeutral svg {
+	color: #f59e0b;
+}

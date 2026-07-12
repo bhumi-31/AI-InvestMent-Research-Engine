@@ -1,5 +1,6 @@
 
 
+import styles from './ReasoningCard.module.css';
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
@@ -18,7 +19,7 @@ function getReasonType(text) {
   ) {
     return {
       icon: <WarningAmberIcon />,
-      className: "reason-card danger",
+      className: `${styles.reasonCard} ${styles.reasonCardDanger}`,
       title: "Risk"
     };
   }
@@ -31,14 +32,14 @@ function getReasonType(text) {
   ) {
     return {
       icon: <NewspaperIcon />,
-      className: "reason-card neutral",
+      className: `${styles.reasonCard} ${styles.reasonCardNeutral}`,
       title: "Market News"
     };
   }
 
   return {
     icon: <CheckCircleIcon />,
-    className: "reason-card positive",
+    className: `${styles.reasonCard} ${styles.reasonCardPositive}`,
     title: "Positive Signal"
   };
 }
@@ -58,17 +59,17 @@ function ReasoningCard({ reasoning }) {
         Why did AI recommend this?
       </div>
 
-      <p className="reasoning-subtitle">
+      <p className={styles.reasoningSubtitle}>
         These are the main factors considered before generating the investment recommendation.
       </p>
 
-      <div className="reason-grid">
+      <div className={styles.reasoningGrid}>
         {reasons.map((reason, index) => {
           const item = getReasonType(reason);
 
           return (
             <div key={index} className={item.className}>
-              <div className="reason-card-header">
+              <div className={styles.reasonCardHeader}>
                 {item.icon}
                 <h4>{item.title}</h4>
               </div>

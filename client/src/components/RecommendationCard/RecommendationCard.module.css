@@ -1,0 +1,178 @@
+.recommendationCard {
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(139, 92, 246, 0.06) 100%);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: var(--radius-xl);
+	padding: 36px;
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.recommendationTop {
+	margin-bottom: 8px;
+}
+
+.companyName {
+	font-size: 2rem;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom: 18px;
+}
+
+.recommendationCardHeader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	flex-wrap: wrap;
+	margin-bottom: 28px;
+}
+.decisionBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 28px;
+	border-radius: 50px;
+	font-size: 1.3rem;
+	font-weight: 800;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+.decisionBadge--invest {
+	background: rgba(34, 197, 94, 0.15);
+	color: var(--accent-green);
+	border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.decisionBadge--pass {
+	background: rgba(239, 68, 68, 0.15);
+	color: var(--accent-red);
+	border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.decisionBadge--hold {
+	background: rgba(234, 179, 8, 0.15);
+	color: var(--accent-yellow);
+	border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.sentimentBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 16px;
+	border-radius: 50px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+}
+
+.sentimentBadge--positive {
+	background: rgba(34, 197, 94, 0.12);
+	color: var(--accent-green);
+	border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.sentimentBadge--negative {
+	background: rgba(239, 68, 68, 0.12);
+	color: var(--accent-red);
+	border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.sentimentBadge--mixed {
+	background: rgba(59, 130, 246, 0.12);
+	color: var(--accent-blue);
+	border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.sentimentBadge--neutral {
+	background: rgba(234, 179, 8, 0.12);
+	color: var(--accent-yellow);
+	border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.confidenceSection {
+	max-width: 400px;
+	margin: 0 auto 24px;
+}
+
+.confidenceLabel {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.82rem;
+	color: var(--text-secondary);
+	margin-bottom: 8px;
+}
+
+.confidenceLabelValue {
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+.confidenceBar {
+	height: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.confidenceBarFill {
+	height: 100%;
+	border-radius: 10px;
+	background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+	transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.confidenceBarFill--high {
+	background: linear-gradient(90deg, var(--accent-green), #4ade80);
+}
+
+.confidenceBarFill--low {
+	background: linear-gradient(90deg, var(--accent-red), #f87171);
+}
+
+.recommendationMessage {
+	margin-bottom: 24px;
+}
+
+.recommendationMessageTitle {
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: #fff;
+	margin: 22px 0 10px;
+}
+
+.recommendationSummary {
+	max-width: 650px;
+	margin: 0 auto 24px;
+	color: #c4c4d4;
+	line-height: 1.7;
+	font-size: 1rem;
+}
+
+.stockStats {
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	flex-wrap: wrap;
+	margin-top: 4px;
+}
+
+.stockStat {
+	text-align: center;
+}
+
+.stockStatLabel {
+	font-size: 0.72rem;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 4px;
+}
+.stockStatValue {
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: var(--text-primary);
+}

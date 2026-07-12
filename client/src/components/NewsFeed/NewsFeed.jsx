@@ -1,5 +1,6 @@
 
 
+import styles from './NewsFeed.module.css';
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
@@ -29,32 +30,32 @@ function NewsFeed({ articles }) {
         Latest News
       </div>
 
-      <div className="news-grid">
+      <div className={styles.newsGrid}>
         {articles.map((article, index) => (
-          <div key={index} className="news-card">
+          <div key={index} className={styles.newsCard}>
 
-            <div className="news-card__header">
+            <div className={styles.newsCardHeader}>
 
               {article.source && (
-                <span className="news-source">
+                <span className={`${styles.newsSource} ${styles.newsChip}`}>
                   {article.source}
                 </span>
               )}
 
               {article.date && (
-                <span className="news-date">
+                <span className={styles.newsDate}>
                   {formatDate(article.date)}
                 </span>
               )}
 
             </div>
 
-            <h3 className="news-title">
+            <h3 className={styles.newsTitle}>
               {article.title}
             </h3>
 
             {article.description && (
-              <p className="news-description">
+              <p className={styles.newsDescription}>
                 {article.description}
               </p>
             )}
@@ -64,7 +65,7 @@ function NewsFeed({ articles }) {
                 href={article.url}
                 target="_blank"
                 rel="noreferrer"
-                className="news-link"
+                className={styles.newsLink}
               >
                 Read Full Article
                 <OpenInNewIcon

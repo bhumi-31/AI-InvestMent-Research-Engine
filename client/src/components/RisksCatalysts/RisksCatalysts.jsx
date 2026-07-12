@@ -1,3 +1,4 @@
+import styles from './RisksCatalysts.module.css';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ShieldIcon from '@mui/icons-material/Shield';
@@ -9,18 +10,18 @@ function RisksCatalysts({ risks, catalysts }) {
   }
 
   return (
-    <div className="risks-catalysts-grid">
+    <div className={styles.risksCatalystsGrid}>
       {/* Risks */}
-      <div className="rc-card">
-        <div className="rc-card__title rc-card__title--risk">
+      <div className={styles.rcCard}>
+        <div className={`${styles.rcCardTitle} ${styles.rcCardTitleRisk}`}>
           <ShieldIcon style={{ fontSize: '1.1rem' }} />
           Key Risks
         </div>
         {risks && risks.length > 0 ? (
-          <ul className="rc-list">
+          <ul className={`${styles.rcList} ${styles.rcItems}`}>
             {risks.map((risk, i) => (
-              <li key={i} className="rc-item">
-                <WarningAmberIcon className="rc-item__icon--risk" />
+              <li key={i} className={`${styles.rcItem} ${styles.rcItemCard}`}>
+                <WarningAmberIcon className={styles.rcItemIconRisk} />
                 <span>{risk}</span>
               </li>
             ))}
@@ -33,16 +34,16 @@ function RisksCatalysts({ risks, catalysts }) {
       </div>
 
       {/* Catalysts */}
-      <div className="rc-card">
-        <div className="rc-card__title rc-card__title--catalyst">
+      <div className={styles.rcCard}>
+        <div className={`${styles.rcCardTitle} ${styles.rcCardTitleCatalyst}`}>
           <RocketLaunchIcon style={{ fontSize: '1.1rem' }} />
           Growth Catalysts
         </div>
         {catalysts && catalysts.length > 0 ? (
-          <ul className="rc-list">
+          <ul className={`${styles.rcList} ${styles.rcItems}`}>
             {catalysts.map((catalyst, i) => (
-              <li key={i} className="rc-item">
-                <TrendingUpIcon className="rc-item__icon--catalyst" />
+              <li key={i} className={`${styles.rcItem} ${styles.rcItemCard}`}>
+                <TrendingUpIcon className={styles.rcItemIconCatalyst} />
                 <span>{catalyst}</span>
               </li>
             ))}

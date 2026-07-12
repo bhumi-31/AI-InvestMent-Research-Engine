@@ -11,7 +11,7 @@ router.post("/research", async (req, res) => {
             return res.status(400).json({ error: "Company name is required." });
         }
 
-        console.log(`\n🚀 Starting research for: ${companyName}\n`);
+        console.log(`Starting research for: ${companyName}\n`);
 
         const result = await investmentGraph.invoke({
             companyName: companyName,

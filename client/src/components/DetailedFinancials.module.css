@@ -1,0 +1,171 @@
+.analysisPreview {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 24px;
+	color: #d4d4d8;
+}
+
+.analysisPreview__icon {
+	color: var(--accent-purple);
+	font-size: 42px !important;
+}
+
+.analysisBanner {
+	display: flex;
+	gap: 18px;
+	align-items: center;
+	background: rgba(139, 92, 246, 0.08);
+	border: 1px solid rgba(139, 92, 246, 0.25);
+	border-radius: 18px;
+	padding: 22px;
+	margin-bottom: 24px;
+}
+
+.analysisBanner svg {
+	font-size: 42px;
+	color: #8b5cf6;
+}
+
+.analysisBanner h3 {
+	margin: 0 0 8px;
+	color: #fff;
+}
+
+.analysisBanner p {
+	margin: 0;
+	color: #b8b8c6;
+}
+
+.financialMarkdown {
+	font-size: 0.88rem;
+	color: var(--text-secondary);
+	line-height: 1.75;
+}
+
+.financialMarkdown h1,
+.financialMarkdown h2,
+.financialMarkdown h3 {
+	color: var(--text-primary);
+	margin: 20px 0 10px;
+	font-weight: 600;
+}
+
+.financialMarkdown p {
+	margin-bottom: 12px;
+}
+
+.financialMarkdown ul,
+.financialMarkdown ol {
+	padding-left: 20px;
+	margin-bottom: 12px;
+}
+
+.financialMarkdown li {
+	margin-bottom: 6px;
+}
+
+.financialMarkdown strong {
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+.financialMarkdown code {
+	background: rgba(255, 255, 255, 0.06);
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 0.84rem;
+}
+
+.financialMarkdown table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 16px 0;
+}
+
+.financialMarkdown th,
+.financialMarkdown td {
+	padding: 10px 14px;
+	border: 1px solid var(--border-color);
+	text-align: left;
+	font-size: 0.84rem;
+}
+
+.financialMarkdown th {
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+.financialMarkdown hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 20px 0;
+}
+
+.accordion {
+	margin-bottom: 20px;
+}
+
+.accordionHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: var(--bg-card);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius-lg);
+	padding: 18px 24px;
+	cursor: pointer;
+	transition: var(--transition);
+	user-select: none;
+}
+
+.accordionHeader:hover {
+	background: var(--bg-card-hover);
+	border-color: var(--border-color-hover);
+}
+
+.accordionHeaderLeft {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--text-primary);
+}
+
+.accordionIcon {
+	color: var(--text-muted);
+	transition: transform 0.3s ease;
+	font-size: 1.2rem !important;
+}
+
+.accordionIconOpen {
+	transform: rotate(180deg);
+}
+
+.accordionBody {
+	background: var(--bg-card);
+	border: 1px solid var(--border-color);
+	border-top: none;
+	border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+	padding: 24px 28px;
+	animation: accordionOpen 0.3s ease;
+}
+
+@keyframes accordionOpen {
+	from {
+		opacity: 0;
+		max-height: 0;
+	}
+	to {
+		opacity: 1;
+		max-height: 2000px;
+	}
+}
+
+.accordionOpen .accordionHeader {
+	border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}

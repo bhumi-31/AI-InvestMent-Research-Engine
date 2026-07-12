@@ -1,5 +1,6 @@
 
 
+import styles from './SentimentAnalysis.module.css';
 import InsightsIcon from "@mui/icons-material/Insights";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
@@ -42,7 +43,7 @@ function SentimentAnalysis({ data }) {
         Overall Market Mood
       </div>
 
-      <div className="sentiment-overall">
+      <div className={styles.sentimentOverall}>
         <span
           className={`sentiment-badge sentiment-badge--${getSentimentClass(
             overall
@@ -52,13 +53,13 @@ function SentimentAnalysis({ data }) {
         </span>
       </div>
 
-      <p className="sentiment-summary">
+      <p className={styles.sentimentSummary}>
         {summary}
       </p>
 
-      <div className="sentiment-stats">
+      <div className={styles.sentimentStats}>
 
-        <div className="sentiment-stat positive">
+        <div className={`${styles.sentimentStat} ${styles.positive}`}>
           <TrendingUpIcon />
           <div>
             <strong>{positive}</strong>
@@ -66,7 +67,7 @@ function SentimentAnalysis({ data }) {
           </div>
         </div>
 
-        <div className="sentiment-stat neutral">
+        <div className={`${styles.sentimentStat} ${styles.neutral}`}>
           <TrendingFlatIcon />
           <div>
             <strong>{neutral}</strong>
@@ -74,7 +75,7 @@ function SentimentAnalysis({ data }) {
           </div>
         </div>
 
-        <div className="sentiment-stat negative">
+        <div className={`${styles.sentimentStat} ${styles.negative}`}>
           <TrendingDownIcon />
           <div>
             <strong>{negative}</strong>

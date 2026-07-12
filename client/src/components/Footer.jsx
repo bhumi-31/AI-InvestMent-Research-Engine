@@ -1,7 +1,9 @@
+import styles from './Footer.module.css';
+
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__divider" />
+    <footer className={styles.footer}>
+      <div className={styles.footerDivider} />
       Powered by Yahoo Finance • NewsAPI • LangGraph • OpenAI
     </footer>
   );

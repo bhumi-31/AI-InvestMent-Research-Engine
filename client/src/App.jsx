@@ -2,14 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import { researchCompany } from './services/api';
 
-import SearchBar from './components/SearchBar';
-import RecommendationCard from './components/RecommendationCard';
-import FinancialSnapshot from './components/FinancialSnapshot';
-import ReasoningCard from './components/ReasoningCard';
-import RisksCatalysts from './components/RisksCatalysts';
-import NewsFeed from './components/NewsFeed';
-import SentimentAnalysis from './components/SentimentAnalysis';
-import CompanyProfile from './components/CompanyProfile';
+import SearchBar from './components/SearchBar/SearchBar';
+import RecommendationCard from './components/RecommendationCard/RecommendationCard';
+import FinancialSnapshot from './components/FinancialSnapshot/FinancialSnapshot';
+import ReasoningCard from './components/ReasoningCard/ReasoningCard';
+import RisksCatalysts from './components/RisksCatalysts/RisksCatalysts';
+import NewsFeed from './components/NewsFeed/NewsFeed';
+import SentimentAnalysis from './components/SentimentAnalysis/SentimentAnalysis';
+import CompanyProfile from './components/CompanyProfile/CompanyProfile';
 import DetailedFinancials from './components/DetailedFinancials';
 import Footer from './components/Footer';
 
