@@ -491,8 +491,7 @@ The LLM was used for:
 - Debugging
 - UI/UX improvements
 - Documentation
-
-The development conversation logs are included separately as bonus material to demonstrate the overall design process and implementation decisions.
+As part of the development process, ChatGPT was used as an AI development assistant to brainstorm ideas, refine prompts, troubleshoot implementation issues, improve the user interface, and document the project.
 
 ---
 
