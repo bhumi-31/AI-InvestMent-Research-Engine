@@ -175,6 +175,8 @@ TAVILY_API_KEY=your_tavily_api_key
 
 NEWS_API_KEY=your_newsapi_key
 
+FMP_API_KEY=your_financial_modeling_prep_api_key
+
 ```
 
 ---
