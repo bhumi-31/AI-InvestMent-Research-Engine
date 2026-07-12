@@ -9,8 +9,8 @@ const decisionMaker = async (state) => {
   const sentimentData = state.sentimentData;
 
   // Format news for the prompt
-  const newsText = Array.isArray(newsArticles) 
-    ? newsArticles.map((a, i) => `${i+1}. "${a.title}" (${a.source})`).join("\n")
+  const newsText = Array.isArray(newsArticles)
+    ? newsArticles.map((a, i) => `${i + 1}. "${a.title}" (${a.source})`).join("\n")
     : "No news available";
 
   // Format sentiment for the prompt
@@ -19,33 +19,67 @@ const decisionMaker = async (state) => {
     : "No sentiment data available";
 
   const response = await llm.invoke(
-    `You are a senior investment advisor at a top-tier investment firm.
-     Make a final investment decision based ONLY on the research data provided below.
-     
-     IMPORTANT RULES:
-     - Base your decision ONLY on the data provided. Do NOT use general knowledge.
-     - Reference SPECIFIC numbers, facts, and articles in your reasoning.
-     
-     === COMPANY PROFILE ===
-     ${companyProfile}
-     
-     === FINANCIAL ANALYSIS ===
-     ${financialData}
-     
-     === RECENT NEWS ===
-     ${newsText}
-     
-     === NEWS SENTIMENT ===
-     ${sentimentText}
-     
-     You MUST respond with ONLY valid JSON in this exact format (no markdown, no backticks, no extra text):
-     {
-       "decision": "INVEST or PASS",
-       "confidence": 75,
-       "reasoning": "A detailed paragraph citing specific numbers and news from the data above",
-       "risks": ["Risk 1 with specific data reference", "Risk 2", "Risk 3"],
-       "catalysts": ["Catalyst 1 with specific data reference", "Catalyst 2", "Catalyst 3"]
-     }`
+    `You are an expert investment advisor whose job is to explain investment decisions to people with NO finance background.
+
+Your goal is NOT just to analyze numbers.
+Your goal is to help a beginner understand whether investing is a good idea.
+
+Use ONLY the information provided below.
+
+========================
+COMPANY PROFILE
+========================
+${companyProfile}
+
+========================
+FINANCIAL ANALYSIS
+========================
+${financialData}
+
+========================
+RECENT NEWS
+========================
+${newsText}
+
+========================
+NEWS SENTIMENT
+========================
+${sentimentText}
+
+Rules:
+
+- Do NOT use difficult financial jargon.
+- Keep explanations simple and practical.
+- Mention specific numbers only when they help the explanation.
+- Every sentence should be understandable by someone new to investing.
+- Explain WHY the recommendation is INVEST or PASS.
+- Keep the reasoning under 120 words.
+- Risks and Growth Catalysts should be short bullet points.
+- Avoid generic statements.
+- Never mention that you are an AI.
+
+Return ONLY valid JSON.
+
+{
+  "decision":"INVEST or PASS",
+
+  "confidence":82,
+
+  "reasoning":"Explain the recommendation in simple English. Mention the biggest strengths and biggest concerns in a short paragraph.",
+
+  "risks":[
+     "Short simple risk",
+     "Short simple risk",
+     "Short simple risk"
+  ],
+
+  "catalysts":[
+     "Short simple positive point",
+     "Short simple positive point",
+     "Short simple positive point"
+  ]
+}
+`
   );
 
   console.log("Company Profile:", companyProfile);
@@ -58,7 +92,7 @@ const decisionMaker = async (state) => {
     return { verdict: parsed };
   } catch {
     // Fallback
-    return { 
+    return {
       verdict: {
         decision: "HOLD",
         confidence: 50,

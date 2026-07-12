@@ -1,68 +1,89 @@
-import InsightsIcon from '@mui/icons-material/Insights';
+
+
+import InsightsIcon from "@mui/icons-material/Insights";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 function getSentimentClass(sentiment) {
-  if (!sentiment) return 'neutral';
+  if (!sentiment) return "neutral";
+
   const s = sentiment.toUpperCase();
-  if (s === 'POSITIVE') return 'positive';
-  if (s === 'NEGATIVE') return 'negative';
-  if (s === 'MIXED') return 'mixed';
-  return 'neutral';
+
+  if (s === "POSITIVE") return "positive";
+  if (s === "NEGATIVE") return "negative";
+  if (s === "MIXED") return "mixed";
+
+  return "neutral";
 }
 
 function SentimentAnalysis({ data }) {
   if (!data) return null;
 
-  const { overall, summary, articles } = data;
+  const { overall, summary, articles = [] } = data;
+
+  const positive = articles.filter(
+    (a) => a.sentiment === "POSITIVE"
+  ).length;
+
+  const neutral = articles.filter(
+    (a) => a.sentiment === "NEUTRAL"
+  ).length;
+
+  const negative = articles.filter(
+    (a) => a.sentiment === "NEGATIVE"
+  ).length;
 
   return (
     <div className="glass-card">
+
       <div className="section-title">
         <InsightsIcon className="icon" />
-        Sentiment Analysis
+        Overall Market Mood
       </div>
 
-      {/* Overall Badge */}
-      {overall && (
-        <div className="sentiment-overall">
-          <span className={`sentiment-badge sentiment-badge--${getSentimentClass(overall)}`}>
-            {overall}
-          </span>
-        </div>
-      )}
+      <div className="sentiment-overall">
+        <span
+          className={`sentiment-badge sentiment-badge--${getSentimentClass(
+            overall
+          )}`}
+        >
+          {overall}
+        </span>
+      </div>
 
-      {/* Summary */}
-      {summary && (
-        <p className="sentiment-summary">{summary}</p>
-      )}
+      <p className="sentiment-summary">
+        {summary}
+      </p>
 
-      {/* Article-wise sentiment */}
-      {articles && articles.length > 0 && (
-        <div className="sentiment-articles">
-          {articles.map((article, i) => {
-            const sentClass = getSentimentClass(article.sentiment);
-            return (
-              <div key={i} className="sentiment-article-item">
-                <span className={`sentiment-dot sentiment-dot--${sentClass}`} />
-                <div className="sentiment-article-item__content">
-                  <div className="sentiment-article-item__title">
-                    {article.title || 'Untitled'}
-                  </div>
-                  {article.reason && (
-                    <div className="sentiment-article-item__reason">
-                      {article.reason}
-                    </div>
-                  )}
-                </div>
-                <span
-                  className={`sentiment-badge sentiment-badge--${sentClass} sentiment-article-item__badge`}
-                >
-                  {article.sentiment || 'N/A'}
-                </span>
-              </div>
-            );
-          })}
+      <div className="sentiment-stats">
+
+        <div className="sentiment-stat positive">
+          <TrendingUpIcon />
+          <div>
+            <strong>{positive}</strong>
+            <span>Positive</span>
+          </div>
         </div>
-      )}
+
+        <div className="sentiment-stat neutral">
+          <TrendingFlatIcon />
+          <div>
+            <strong>{neutral}</strong>
+            <span>Neutral</span>
+          </div>
+        </div>
+
+        <div className="sentiment-stat negative">
+          <TrendingDownIcon />
+          <div>
+            <strong>{negative}</strong>
+            <span>Negative</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 }

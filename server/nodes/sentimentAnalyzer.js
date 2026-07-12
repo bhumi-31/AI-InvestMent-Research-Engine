@@ -7,7 +7,7 @@ const sentimentAnalyzer = async (state) => {
   const companyName = state.companyName;
 
   if (!newsArticles || newsArticles.length === 0) {
-    return { 
+    return {
       sentimentData: {
         overall: "NEUTRAL",
         summary: "No news articles available for sentiment analysis.",
@@ -21,36 +21,57 @@ const sentimentAnalyzer = async (state) => {
     .map((a, i) => `Article ${i + 1}: "${a.title}" - ${a.description}`)
     .join("\n");
 
-  const response = await llm.invoke(
-    `You are a sentiment analysis expert specializing in financial news.
-     Analyze the sentiment of EACH news article below about "${companyName}".
-     
-     IMPORTANT: Only analyze articles directly about "${companyName}".
-     If an article is not about ${companyName}, mark its sentiment as "IRRELEVANT".
-     
-     News Articles:
-     ${articlesText}
-     
-     You MUST respond with ONLY valid JSON in this exact format (no markdown, no backticks, no extra text):
-     {
-       "overall": "POSITIVE or NEGATIVE or NEUTRAL or MIXED",
-       "summary": "2-3 sentence summary of what the news means for ${companyName} as an investment",
-       "articles": [
-         {
-           "title": "article title",
-           "sentiment": "POSITIVE or NEGATIVE or NEUTRAL or IRRELEVANT",
-           "reason": "one sentence reason"
-         }
-       ]
-     }`
-  );
+  const response = await llm.invoke(`
+You are a financial news sentiment analyst.
+
+Analyze ONLY the news articles provided below for "${companyName}".
+
+IMPORTANT RULES:
+
+- Analyze EVERY article individually.
+- Ignore articles that are not primarily about ${companyName}.
+- For each article assign ONLY one label:
+  POSITIVE
+  NEGATIVE
+  NEUTRAL
+  IRRELEVANT
+
+Determine the OVERALL sentiment using these rules:
+
+- POSITIVE → More than 70% relevant articles are positive.
+- NEGATIVE → More than 70% relevant articles are negative.
+- MIXED → Positive and negative articles are both significant.
+- NEUTRAL → Most articles are factual with little positive or negative impact.
+
+DO NOT always choose POSITIVE.
+
+Keep the summary under 30 words and use simple English.
+
+News Articles:
+
+${articlesText}
+
+Return ONLY valid JSON.
+
+{
+  "overall":"POSITIVE | NEGATIVE | NEUTRAL | MIXED",
+  "summary":"Maximum 30 words.",
+  "articles":[
+    {
+      "title":"...",
+      "sentiment":"POSITIVE | NEGATIVE | NEUTRAL | IRRELEVANT",
+      "reason":"Maximum 12 words."
+    }
+  ]
+}
+`);
 
   try {
     const parsed = JSON.parse(response.content);
     return { sentimentData: parsed };
   } catch {
     // Fallback if JSON parsing fails
-    return { 
+    return {
       sentimentData: {
         overall: "UNKNOWN",
         summary: response.content,
