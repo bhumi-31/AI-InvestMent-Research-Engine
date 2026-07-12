@@ -372,35 +372,40 @@ Due to limited development time, the following features were left for future wor
 
 The following screenshots demonstrate the application's output for different companies.
 
-### Example 1
+# Example Runs
 
-Company: Apple
+# Example Runs
 
-Recommendation: INVEST
+## Example 1 – TCS Group Holdings Berhad
 
-*(Insert Screenshot Here)*
+**Recommendation:** INVEST
 
----
+**Summary:**
+The AI identified strong financial performance, positive market sentiment, and favorable growth prospects. Based on the available financial metrics and recent news analysis, the system concluded that the company's strengths outweigh its risks, resulting in an **INVEST** recommendation with high confidence.
 
-### Example 2
-
-Company: Intel
-
-Recommendation: PASS
-
-*(Insert Screenshot Here)*
+![TCS Group Holdings Berhad](screenshots/tcs-invest.png)
 
 ---
 
-### Example 3
+## Example 2 – NVIDIA Corporation
 
-Company: Tata Motors
+**Recommendation:** PASS
 
-Recommendation: PASS
+**Summary:**
+Although NVIDIA is a global leader in AI and semiconductor technology, the AI considered the company's current valuation and identified several financial risks. Based on the overall financial analysis and market sentiment, the system recommended waiting for a better investment opportunity.
 
-*(Insert Screenshot Here)*
+![NVIDIA Corporation](screenshots/nvidia-pass.png)
 
 ---
+
+## Example 3 – HCL Technologies
+
+**Recommendation:** PASS
+
+**Summary:**
+The AI evaluated HCL Technologies using its financial performance, recent news sentiment, and overall financial health. While the company demonstrated stable business fundamentals, the identified risks outweighed the potential upside at the current stage, leading to a **PASS** recommendation.
+
+![HCL Technologies](screenshots/hcl-pass.png)
 
 # Future Improvements
 
