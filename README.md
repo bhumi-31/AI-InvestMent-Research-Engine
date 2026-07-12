@@ -383,7 +383,7 @@ The following screenshots demonstrate the application's output for different com
 **Summary:**
 The AI identified strong financial performance, positive market sentiment, and favorable growth prospects. Based on the available financial metrics and recent news analysis, the system concluded that the company's strengths outweigh its risks, resulting in an **INVEST** recommendation with high confidence.
 
-![TCS Group Holdings Berhad](screenshots/tcs-invest.png)
+![TCS Group Holdings Berhad](screenshots/tcs.png)
 
 ---
 
@@ -405,7 +405,7 @@ Although NVIDIA is a global leader in AI and semiconductor technology, the AI co
 **Summary:**
 The AI evaluated HCL Technologies using its financial performance, recent news sentiment, and overall financial health. While the company demonstrated stable business fundamentals, the identified risks outweighed the potential upside at the current stage, leading to a **PASS** recommendation.
 
-![HCL Technologies](screenshots/hcl-pass.png)
+![HCL Technologies](screenshots/hcl.jpg)
 
 # Future Improvements
 
