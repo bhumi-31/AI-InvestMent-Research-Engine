@@ -1,10 +1,9 @@
 # AI Investment Research Engine
-
-An AI-powered investment research platform that analyzes publicly traded companies using a multi-agent workflow built with **LangGraph**. The application researches a company, evaluates its financial performance, analyzes recent news, determines market sentiment, and generates an AI-based investment recommendation in a beginner-friendly dashboard.
+### A Multi-Agent Investment Recommendation System using LangGraph and OpenAI
 
 ---
 
-# Live Demo
+## Live Demo
 
 ### Frontend (Vercel)
 
@@ -18,29 +17,32 @@ https://ai-investment-research-engine.onrender.com/
 
 # Overview
 
-The AI Investment Research Engine helps users make informed investment decisions by combining financial analysis, company research, and news sentiment into a single recommendation.
+The AI Investment Research Engine is a multi-agent AI application that helps users evaluate whether a company is a suitable investment opportunity.
 
-Instead of relying on one large prompt, the application follows a **multi-agent architecture**, where each AI agent is responsible for a single task. This approach makes the system modular, maintainable, and produces more structured results.
+Instead of relying on a single prompt, the application uses a **LangGraph-based multi-agent workflow**, where each AI agent is responsible for a specific task such as company research, financial analysis, news collection, sentiment analysis, and investment decision making.
 
-The final recommendation is presented in a clean dashboard designed for both finance and non-finance users.
+The system collects real financial data, analyzes recent news, evaluates market sentiment, and combines all the information to generate an AI-powered investment recommendation.
+
+The results are displayed through a modern React dashboard designed to be simple enough for users with little or no financial knowledge.
 
 ---
 
 # Features
 
-- Multi-agent workflow using LangGraph
-- Company profile generation
-- Live financial data analysis
-- Latest company news
+- Multi-Agent AI workflow using LangGraph
+- Company research using Tavily Search
+- Live financial data using Yahoo Finance
+- Latest news collection using NewsAPI
 - AI-powered sentiment analysis
-- Final investment recommendation (INVEST / PASS)
-- AI confidence score
-- Financial health indicators
-- Risk analysis
+- AI-generated investment recommendation
+- Confidence score for recommendations
+- Financial health overview
+- AI reasoning
+- Key investment risks
 - Growth opportunities
-- Beginner-friendly explanations
-- Modern responsive React dashboard
-- Deployed on Vercel and Render
+- Beginner-friendly financial explanations
+- Responsive React dashboard
+- Fully deployed on Vercel and Render
 
 ---
 
@@ -49,26 +51,35 @@ The final recommendation is presented in a clean dashboard designed for both fin
 ## Frontend
 
 - React.js
-- CSS3
+- Vite
 - Material UI
 - Axios
+- React Markdown
+- CSS3
+
+---
 
 ## Backend
 
 - Node.js
 - Express.js
-
-## AI
-
-- OpenAI GPT
 - LangChain
 - LangGraph
 
-## APIs
+---
 
-- Yahoo Finance
+## AI Model
+
+- OpenAI GPT-4o-mini
+
+---
+
+## External APIs
+
+- Tavily Search API
+- Yahoo Finance API
 - NewsAPI
-- Tavily Search
+- Financial Modeling Prep (Ticker Lookup)
 
 ---
 
@@ -98,6 +109,8 @@ AI_INVESTMENT_RESEARCH_ENGINE
 │   ├── index.js
 │   └── package.json
 │
+├── screenshots
+│
 └── README.md
 ```
 
@@ -105,7 +118,7 @@ AI_INVESTMENT_RESEARCH_ENGINE
 
 # How to Run
 
-## Option 1 — Use the Deployed Version
+## Option 1 – Use the Deployed Application
 
 Frontend
 
@@ -115,13 +128,13 @@ Backend
 
 https://ai-investment-research-engine.onrender.com/
 
-No setup required.
+No installation is required.
 
 ---
 
-## Option 2 — Run Locally
+## Option 2 – Run Locally
 
-### Clone Repository
+### Clone the repository
 
 ```bash
 git clone <repository-url>
@@ -131,7 +144,7 @@ cd AI_INVESTMENT_RESEARCH_ENGINE
 
 ---
 
-### Install Backend
+### Install Backend Dependencies
 
 ```bash
 cd server
@@ -141,7 +154,7 @@ npm install
 
 ---
 
-### Install Frontend
+### Install Frontend Dependencies
 
 ```bash
 cd client
@@ -151,21 +164,23 @@ npm install
 
 ---
 
-# Environment Variables
+## Create Environment Variables
 
 Create a `.env` file inside the **server** folder.
 
 ```env
 OPENAI_API_KEY=your_openai_api_key
 
+TAVILY_API_KEY=your_tavily_api_key
+
 NEWS_API_KEY=your_newsapi_key
 
-TAVILY_API_KEY=your_tavily_api_key
+FMP_API_KEY=your_financial_modeling_prep_api_key
 ```
 
 ---
 
-# Start Backend
+## Start Backend
 
 ```bash
 cd server
@@ -181,7 +196,7 @@ http://localhost:8000
 
 ---
 
-# Start Frontend
+## Start Frontend
 
 ```bash
 cd client
@@ -199,7 +214,7 @@ http://localhost:5173
 
 # How It Works
 
-The application follows a multi-agent workflow built using LangGraph.
+The application follows a multi-agent architecture built using LangGraph.
 
 ```
 User
@@ -229,28 +244,32 @@ Decision Making Agent
 Investment Recommendation Dashboard
 ```
 
+Each agent performs one dedicated task and passes its output to the next agent, producing a structured and explainable investment recommendation.
+
 ---
 
 # Agent Responsibilities
 
-## Company Research Agent
+## 1. Company Research Agent
 
-Researches the company and generates:
+Uses **Tavily Search** to collect reliable company information and generates:
 
 - Company overview
 - Industry
 - CEO
 - Headquarters
+- Founding year
 - Products and services
 - Market position
 
 ---
 
-## Financial Analysis Agent
+## 2. Financial Analysis Agent
 
-Fetches live financial data from Yahoo Finance and evaluates metrics including:
+Uses **Yahoo Finance** to fetch live financial data such as:
 
 - Market Capitalization
+- Current Stock Price
 - Revenue
 - Net Income
 - P/E Ratio
@@ -258,22 +277,27 @@ Fetches live financial data from Yahoo Finance and evaluates metrics including:
 - EPS
 - ROE
 - ROA
-- Debt-to-Equity
 - Current Ratio
+- Debt-to-Equity
+- Gross Margin
+- Operating Margin
+- Profit Margin
 
-The AI converts these metrics into easy-to-understand financial insights.
-
----
-
-## News Collection Agent
-
-Collects recent company-related news using NewsAPI and Tavily Search.
+The AI then converts these metrics into beginner-friendly financial insights.
 
 ---
 
-## Sentiment Analysis Agent
+## 3. News Collection Agent
 
-Analyzes each news article and determines:
+Uses **Financial Modeling Prep** to identify the company's ticker symbol and official company name, then retrieves recent company-related news using **NewsAPI**.
+
+The retrieved articles are ranked based on relevance before selecting the most relevant articles for analysis.
+
+---
+
+## 4. Sentiment Analysis Agent
+
+Analyzes every news article individually and determines:
 
 - Positive
 - Neutral
@@ -284,22 +308,22 @@ It also generates an overall market sentiment summary.
 
 ---
 
-## Decision Making Agent
+## 5. Decision Making Agent
 
 Combines:
 
 - Company Profile
 - Financial Analysis
-- News
-- Sentiment Analysis
+- Latest News
+- News Sentiment
 
 to generate:
 
-- Final Recommendation (INVEST / PASS)
-- Confidence Score
-- AI Reasoning
-- Key Risks
-- Growth Opportunities
+- INVEST or PASS recommendation
+- Confidence score
+- AI reasoning
+- Key risks
+- Growth opportunities
 
 ---
 
@@ -312,18 +336,18 @@ to generate:
                     Express Backend
                            │
                            ▼
-                   LangGraph Workflow
+                  LangGraph Workflow
                            │
-        ┌────────────────────────────────┐
-        │ Company Research Agent         │
-        │ Financial Analysis Agent       │
-        │ News Collection Agent          │
-        │ Sentiment Analysis Agent       │
-        │ Decision Making Agent          │
-        └────────────────────────────────┘
+        ┌────────────────────────────────────┐
+        │ Company Research Agent             │
+        │ Financial Analysis Agent           │
+        │ News Collection Agent              │
+        │ Sentiment Analysis Agent           │
+        │ Decision Making Agent              │
+        └────────────────────────────────────┘
                            │
                            ▼
-               Final Investment Recommendation
+             Investment Recommendation Dashboard
 ```
 
 ---
@@ -332,47 +356,47 @@ to generate:
 
 ## Why LangGraph?
 
-Instead of asking one LLM prompt to perform every task, the application divides the workflow into multiple AI agents. This makes the system easier to maintain, debug, and extend.
+Instead of generating a recommendation from a single LLM prompt, the project uses multiple specialized AI agents connected through LangGraph. This makes the workflow modular, easier to debug, and easier to extend.
 
 ---
 
 ## Why Yahoo Finance?
 
-Yahoo Finance provides reliable financial metrics that can be used to generate data-driven investment recommendations.
+Yahoo Finance provides reliable and up-to-date financial information that enables the AI to perform data-driven financial analysis.
 
 ---
 
-## Why NewsAPI + Tavily?
+## Why Tavily Search?
 
-Financial decisions are influenced by recent events. NewsAPI provides current company news while Tavily improves search-based company research.
+Tavily Search provides accurate company information that helps generate a structured company profile before financial analysis begins.
 
 ---
 
-## Why a Beginner-Friendly UI?
+## Why NewsAPI?
 
-Many investment tools assume financial knowledge. This application simplifies financial concepts using AI explanations and intuitive visualizations so that beginners can also understand the recommendations.
+Recent news often influences investment decisions. NewsAPI provides timely news articles that allow the AI to evaluate current market sentiment.
+
+---
+
+## Why a Beginner-Friendly Interface?
+
+Most financial dashboards assume prior investment knowledge. This project focuses on explaining financial information in simple language so that even beginner investors can understand the recommendation.
 
 ---
 
 # Trade-offs
 
-Due to limited development time, the following features were left for future work:
+Due to limited development time, the following features were not implemented:
 
 - Historical stock price charts
 - Portfolio tracking
 - Company comparison
 - User authentication
-- AI-generated PDF reports
 - Watchlist functionality
-- Real-time stock streaming
+- AI-generated PDF reports
+- Real-time market streaming
 
 ---
-
-# Example Runs
-
-The following screenshots demonstrate the application's output for different companies.
-
-# Example Runs
 
 # Example Runs
 
@@ -380,10 +404,9 @@ The following screenshots demonstrate the application's output for different com
 
 **Recommendation:** INVEST
 
-**Summary:**
-The AI identified strong financial performance, positive market sentiment, and favorable growth prospects. Based on the available financial metrics and recent news analysis, the system concluded that the company's strengths outweigh its risks, resulting in an **INVEST** recommendation with high confidence.
+The AI identified strong financial performance, positive market sentiment, and favorable growth prospects. Based on the available financial data and recent news, the strengths outweighed the risks.
 
-![TCS Group Holdings Berhad](screenshots/tcs.png)
+![TCS](screenshots/tcs.png)
 
 ---
 
@@ -391,10 +414,9 @@ The AI identified strong financial performance, positive market sentiment, and f
 
 **Recommendation:** PASS
 
-**Summary:**
-Although NVIDIA is a global leader in AI and semiconductor technology, the AI considered the company's current valuation and identified several financial risks. Based on the overall financial analysis and market sentiment, the system recommended waiting for a better investment opportunity.
+Although NVIDIA demonstrated strong business fundamentals, the AI considered the current valuation and investment risks significant enough to recommend waiting before investing.
 
-![NVIDIA Corporation](screenshots/nivi.png)
+![NVIDIA](screenshots/nivi.png)
 
 ---
 
@@ -402,43 +424,75 @@ Although NVIDIA is a global leader in AI and semiconductor technology, the AI co
 
 **Recommendation:** PASS
 
-**Summary:**
-The AI evaluated HCL Technologies using its financial performance, recent news sentiment, and overall financial health. While the company demonstrated stable business fundamentals, the identified risks outweighed the potential upside at the current stage, leading to a **PASS** recommendation.
+The AI evaluated HCL Technologies using financial performance, market sentiment, and recent news. While the company showed stable fundamentals, the identified risks outweighed the potential upside.
 
 ![HCL Technologies](screenshots/hcl.jpg)
 
+---
+
+# Company Profile
+
+The application also generates a structured company profile using Tavily Search and AI.
+
+The profile includes:
+
+- Company overview
+- Industry
+- CEO
+- Headquarters
+- Founding year
+- Products and services
+- Market position
+
+*(Insert Company Profile Screenshot Here if included.)*
+
+---
+
+# Detailed Financial Analysis
+
+The Financial Analysis Agent uses live Yahoo Finance data and converts complex financial metrics into beginner-friendly insights covering:
+
+- Valuation
+- Profitability
+- Financial Health
+- Overall Financial Summary
+
+*(Insert Financial Analysis Screenshot Here if included.)*
+
+---
+
 # Future Improvements
 
-If additional development time were available, the following features would be added:
+Given additional development time, the following features would be added:
 
-- Portfolio Management
-- Historical Stock Charts
-- Company Comparison Dashboard
+- Historical stock price visualization
+- Portfolio management
+- Company comparison dashboard
 - Explainable AI with source citations
-- Indian Stock Exchange Support
-- User Authentication
-- Saved Investment Reports
-- AI-generated PDF Reports
-- Improved News Sentiment Calibration
+- User authentication
+- Saved investment reports
+- AI-generated PDF reports
+- Improved sentiment calibration
+- Support for additional financial data providers
 
 ---
 
 # LLM Usage
 
-This project was developed with the assistance of ChatGPT throughout the entire development lifecycle.
+This project was developed with the assistance of ChatGPT throughout the design and implementation process.
 
 The LLM was used for:
 
 - Designing the LangGraph workflow
 - Prompt engineering
 - Backend architecture
+- AI agent design
 - React component development
 - Debugging
-- UI improvements
-- Financial explanation refinement
+- UI/UX improvements
 - Documentation
 
-The complete development conversation logs have been included separately as bonus material to demonstrate the design process and implementation decisions.
+The development conversation logs are included separately as bonus material to demonstrate the overall design process and implementation decisions.
 
 ---
 
