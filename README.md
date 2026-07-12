@@ -40,6 +40,7 @@ The results are displayed through a modern React dashboard designed to be simple
 - AI reasoning
 - Key investment risks
 - Growth opportunities
+- Modular React component architecture with separated UI styling for improved maintainability.
 - Beginner-friendly financial explanations
 - Responsive React dashboard
 - Fully deployed on Vercel and Render
@@ -55,7 +56,7 @@ The results are displayed through a modern React dashboard designed to be simple
 - Material UI
 - Axios
 - React Markdown
-- CSS3
+- Component-based CSS architecture
 
 ---
 
@@ -83,35 +84,42 @@ The results are displayed through a modern React dashboard designed to be simple
 
 ---
 
-# Project Structure
+## Project Structure
 
-```
+```text
 AI_INVESTMENT_RESEARCH_ENGINE
-
 │
-├── client
-│   ├── src
-│   │   ├── assets
-│   │   ├── components
-│   │   ├── services
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CompanyProfile/
+│   │   │   ├── FinancialSnapshot/
+│   │   │   ├── NewsFeed/
+│   │   │   ├── RecommendationCard/
+│   │   │   ├── ReasoningCard/
+│   │   │   ├── RisksCatalysts/
+│   │   │   ├── SearchBar/
+│   │   │   ├── SentimentAnalysis/
+│   │   │   ├── DetailedFinancials/
+│   │   │   └── Footer/
+│   │   ├── services/
 │   │   ├── App.jsx
 │   │   ├── App.css
-│   │   └── main.jsx
-│   │
+│   │   └── AppShared.css
 │   └── package.json
 │
-├── server
-│   ├── config
-│   ├── graph
-│   ├── nodes
-│   ├── routes
-│   ├── tools
-│   ├── index.js
-│   └── package.json
+├── server/
+│   ├── config/
+│   ├── graph/
+│   ├── nodes/
+│   ├── routes/
+│   ├── tools/
+│   ├── package.json
+│   └── index.js
 │
-├── screenshots
-│
-└── README.md
+├── screenshots/
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -475,6 +483,7 @@ Given additional development time, the following features would be added:
 - AI-generated PDF reports
 - Improved sentiment calibration
 - Support for additional financial data providers
+- Migrate the styling completely to CSS Modules for fully scoped component styling.
 
 ---
 
