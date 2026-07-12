@@ -14,11 +14,11 @@ import DetailedFinancials from './components/DetailedFinancials';
 import Footer from './components/Footer';
 
 const loadingSteps = [
-  'Fetching company profile...',
-  'Pulling financial data from Yahoo Finance...',
-  'Scanning latest news articles...',
-  'Analyzing sentiment with AI...',
-  'Generating investment verdict...',
+   "Identifying company and validating ticker...",
+  "Collecting financial statements...",
+  "Scanning latest market news...",
+  "Evaluating market sentiment with AI...",
+  "Generating investment recommendation..."
 ];
 
 function App() {
